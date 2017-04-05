@@ -6,7 +6,7 @@ group :test do
   gem 'rspec-collection_matchers'
 end
 
-
+gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use postgresql as the database for Active Record
