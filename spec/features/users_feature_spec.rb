@@ -35,4 +35,18 @@ feature "User can sign in and out" do
       expect(page).not_to have_link('Sign up')
     end
   end
+  context "users can edit/delete restaurants" do
+    it "users can only edit/delete restaurants that they've created" do
+      visit ('/')
+      sign_up("test@test.com", "password")
+      visit '/restaurants'
+      click_link 'Add a restaurant'
+      fill_in 'Name', with: 'Wasabi'
+      click_button 'Create Restaurant'
+      click_link 'Sign out'
+      sign_up("test2@test.com", "password1")
+      click_link "Edit Wasabi"
+      expect(page).to have_content("You do not have permission to edit this restaurant")
+    end
+  end
 end
